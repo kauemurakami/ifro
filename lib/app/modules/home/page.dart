@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ifro/app/data/models/states.dart';
 import 'package:ifro/app/modules/home/controller.dart';
 import 'package:ifro/app/modules/home/widgets/item.dart';
+import 'package:ifro/core/routes/pages.dart';
 import 'package:ifro/core/theme/texts_styles.dart';
 import 'package:ifro/core/utils/extensions/padding_dif.dart';
 
@@ -14,7 +15,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add),
-            onPressed: () => controller.increment()),
+            onPressed: () => Get.rootDelegate.offNamed(Routes.HOME)),
         body: SafeArea(
             child: Column(
           children: [
