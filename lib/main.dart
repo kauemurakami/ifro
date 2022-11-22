@@ -6,6 +6,7 @@ import 'package:ifro/core/utils/helpers/route_delegate.dart';
 
 void main() async {
   await Get.putAsync(() => AuthService().init());
+
   runApp(GetMaterialApp.router(
     getPages: AppPages.pages,
     defaultTransition: Transition.fade,

@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:ifro/app/modules/dash/repository.dart';
 import 'package:ifro/app/modules/home/binding.dart';
 import 'package:ifro/app/modules/home/page.dart';
@@ -9,7 +9,7 @@ import 'package:ifro/core/routes/pages.dart';
 class DashController extends GetxController {
   final DashRepository repository;
   DashController(this.repository);
-
+  final index = 0.obs;
   generateRoutes(settings) {
     if (settings.name == Routes.HOME) {
       return GetPageRoute(
@@ -30,8 +30,16 @@ class DashController extends GetxController {
     return null;
   }
 
+  final current = Routes.HOME.obs;
   final routes = [Routes.HOME, Routes.VACANCY];
   changePage(_) {
-    Get.toNamed(routes[_], id: 1, preventDuplicates: true);
+    index.value = routes.indexOf(routes[_]);
+
+    if (current.value == routes[_]) {
+      null;
+    } else {
+      current.value = routes[_];
+      Get.offNamed(routes[_], id: 1, preventDuplicates: true);
+    }
   }
 }

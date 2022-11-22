@@ -3,20 +3,31 @@ import 'package:ifro/app/modules/dash/binding.dart';
 import 'package:ifro/app/modules/dash/page.dart';
 import 'package:ifro/app/modules/home/binding.dart';
 import 'package:ifro/app/modules/home/page.dart';
+import 'package:ifro/app/modules/serie/page.dart';
 import 'package:ifro/app/modules/vacancy/binding.dart';
 import 'package:ifro/app/modules/vacancy/page.dart';
 part './routes.dart';
 
 abstract class AppPages {
   static final pages = [
-    GetPage(name: Routes.DASH, page: () => DashPage(), binding: DashBinding()),
     GetPage(
-        name: Routes.HOME,
-        page: () => const HomePage(),
-        binding: HomeBinding()),
+        name: Routes.DASH,
+        page: () => DashPage(),
+        binding: DashBinding(),
+        children: [
+          GetPage(
+              name: Routes.HOME,
+              page: () => const HomePage(),
+              binding: HomeBinding()),
+          GetPage(
+              name: Routes.VACANCY,
+              page: () => VacancyPage(),
+              binding: VacancyBinding())
+        ]),
     GetPage(
-        name: Routes.VACANCY,
-        page: () => VacancyPage(),
-        binding: VacancyBinding()),
+      name: Routes.SERIE,
+      page: () => SeriePage(),
+      // binding: SerieBinding(),
+    )
   ];
 }

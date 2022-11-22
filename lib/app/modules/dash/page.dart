@@ -9,12 +9,27 @@ class DashPage extends GetView<DashController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: (_) async => controller.changePage(_),
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home')
-            ]),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+              currentIndex: controller.index.value,
+              onTap: (_) async => controller.changePage(_),
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home,
+                      color: controller.current.value == Routes.HOME
+                          ? Colors.blue
+                          : Colors.grey,
+                    ),
+                    label: 'home'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.abc,
+                        color: controller.current.value == Routes.VACANCY
+                            ? Colors.blue
+                            : Colors.grey),
+                    label: 'VAC')
+              ]),
+        ),
         body: SafeArea(
             child: Navigator(
           key: Get.nestedKey(1),

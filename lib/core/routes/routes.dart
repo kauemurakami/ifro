@@ -6,5 +6,6 @@ abstract class Routes {
   static const DASH = '/dash';
   static const VACANCY = '/vacancy';
   static const LOGIN = '/login';
+  static const SERIE = '/serie';
   static const CADASTRO = '/cadastro';
 }
